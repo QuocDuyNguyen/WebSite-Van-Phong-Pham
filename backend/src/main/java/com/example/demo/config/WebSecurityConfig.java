@@ -63,6 +63,7 @@ public class WebSecurityConfig {
                     .requestMatchers("/api/payment/momo/**").permitAll()
                     .requestMatchers("/error").permitAll()
                     .requestMatchers("/api/admin/**").hasAuthority("admin")
+                    .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
                     .anyRequest().authenticated()
             );
 
