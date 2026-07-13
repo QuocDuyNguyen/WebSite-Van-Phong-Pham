@@ -91,6 +91,46 @@ WebSite-Van-Phong-Pham/
 
 ---
 
+## REST API (Phân chia theo Role)
+
+Dưới đây là danh sách các API của hệ thống được phân chia theo từng nhóm quyền (Role):
+
+### 1.  Nhóm Public / Khách (Không cần đăng nhập)
+*Những API này cho phép bất kỳ ai cũng có thể gọi mà không cần Token.*
+
+| Method | Endpoint | Công dụng |
+|---------|----------|---------------------------------------------------|
+| **POST** | `/api/auth/login` | Xác thực thông tin, đăng nhập và nhận JWT Token. |
+| **POST** | `/api/auth/register` | Khách vãng lai đăng ký tài khoản mới. |
+| **GET** | `/api/categories` | Lấy danh sách các danh mục văn phòng phẩm. |
+| **GET** | `/api/products` | Lấy danh sách tất cả sản phẩm. |
+| **GET** | `/api/products/{id}`| Xem chi tiết một sản phẩm bất kỳ. |
+
+### 2.  Nhóm USER (Người dùng đã đăng nhập)
+*Yêu cầu Header có `Authorization: Bearer <token>` và Role là `user`.*
+
+| Method | Endpoint | Công dụng |
+|---------|----------|---------------------------------------------------|
+| **POST** | `/api/orders` | Đặt hàng (Lưu thông tin giỏ hàng và thanh toán). |
+| **GET** | `/api/orders/my` | Lấy danh sách lịch sử các đơn hàng của user. |
+| **GET** | `/api/users/profile`| Xem thông tin cá nhân của người dùng hiện tại. |
+| **PUT** | `/api/users/profile`| Cập nhật thông tin cá nhân. |
+
+### 3.  Nhóm ADMIN (Quản trị viên)
+*Yêu cầu Header có `Authorization: Bearer <token>` và Role là `admin`.*
+
+| Method | Endpoint | Công dụng |
+|---------|----------|---------------------------------------------------|
+| **POST** | `/api/products` | Thêm một mặt hàng văn phòng phẩm mới. |
+| **PUT** | `/api/products/{id}`| Chỉnh sửa thông tin sản phẩm. |
+| **DELETE**| `/api/products/{id}`| Xóa/Ẩn sản phẩm khỏi cửa hàng. |
+| **POST** | `/api/categories` | Thêm danh mục sản phẩm mới. |
+| **GET** | `/api/orders` | Quản lý toàn bộ đơn hàng của tất cả khách. |
+| **PUT** | `/api/orders/{id}/status`| Cập nhật trạng thái đơn hàng. |
+| **GET** | `/api/users` | Lấy danh sách toàn bộ người dùng để quản lý. |
+
+---
+
 ## Getting Started
 
 ### Clone project
