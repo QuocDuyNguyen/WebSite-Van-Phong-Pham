@@ -160,6 +160,8 @@ Cấu hình `application.properties` (bạn hãy thay đổi cho phù hợp vớ
 spring.datasource.url=jdbc:mysql://localhost:3306/stilo_db?createDatabaseIfNotExist=true&useSSL=false
 spring.datasource.username=root
 spring.datasource.password=your_password
+# Vui lòng nhập API Key cá nhân của bạn để sử dụng các tính năng liên quan đến Gemini AI
+gemini.api.key=your_gemini_api_key_here
 ```
 
 Chạy Server:
